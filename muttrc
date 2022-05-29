@@ -1,0 +1,50 @@
+# !!WARNING Sequence of commands written here matters
+# Where to fetch mails from
+set folder = "imaps://aditya_2001me07@iitp.ac.in@stud.iitp.ac.in:993"
+set spoolfile = "+INBOX"
+
+# smtp sends mails
+set smtp_url = "smtp://aditya_2001me07@iitp.ac.in@stud.iitp.ac.in:587"
+source "~/.config/mutt/passwords"
+
+# Info to use when sending mails
+set from = "aditya_2001me07@iitp.ac.in"
+set realname = "Aditya Baberwal"
+
+# Define other folders/mailboxes
+set record = "+Sent"
+set trash = "+Trash"
+set postponed = "+Drafts"
+
+mailboxes =INBOX =Sent =Trash =Drafts =Junk =Others
+
+# Cache folder
+set header_cache = "~/.cache/mutt/headers"
+set message_cachedir = "~/.cache/mutt/messages"
+source "~/.config/mutt/purgecache.sh '$message_cachedir'|"
+
+# Source colors
+source colors.muttrc
+
+# Sidebar on
+set sidebar_visible
+set sidebar_width = 25
+set sidebar_format = "%B%* %?N?%N/?%S"
+set mail_check_stats
+
+# Some sidebar keybinds
+bind index,pager \Ck sidebar-prev       # Ctrl-k - Previous Mailbox
+bind index,pager \Cj sidebar-next       # Ctrl-j - Next Mailbox
+bind index,pager \Co sidebar-open       # Ctrl-o Open Highlighted Mailbox
+
+# Open file to know usage
+set mailcap_path = "~/.config/mutt/mailcap"
+
+# New mail notification
+set new_mail_command="notify-send \
+'New Email' '%n new messages, %u unread.' &"
+
+set sort=reverse-date
+
+auto_view text/html
+alternative_order text/plain text/html

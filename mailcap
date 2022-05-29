@@ -1,0 +1,16 @@
+# Use zathura to view pdf
+application/pdf; zathura '%s' &> /dev/null &;
+
+# Use sxiv to view images
+image/*; sxiv '%s' &> /dev/null &;
+
+# Libreoffice Writer
+application/msword; libreoffice '%s' &> /dev/null &;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; libreoffice '%s' &> /dev/null &;
+
+# Libreoffice Calc
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; libreoffice '%s' &> /dev/null &;
+application/vnd.ms-excel; libreoffice '%s' &> /dev/null &;
+
+# Use lynx to view html pages
+text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -collapse_br_tags -dump %s; nametemplate=%s.html; copiousoutput
