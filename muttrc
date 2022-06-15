@@ -37,14 +37,20 @@ bind index,pager \Ck sidebar-prev       # Ctrl-k - Previous Mailbox
 bind index,pager \Cj sidebar-next       # Ctrl-j - Next Mailbox
 bind index,pager \Co sidebar-open       # Ctrl-o Open Highlighted Mailbox
 
+# Scroll inside the message rather than the index
+bind pager k previous-line
+bind pager j next-line
+
 # Open file to know usage
 set mailcap_path = "~/.config/mutt/mailcap"
 
 # New mail notification
 set new_mail_command="notify-send \
-'New Email' '%n new messages, %u unread.' &"
+'%n New Email(s)' &"
 
 set sort=reverse-date
+
+set smart_wrap
 
 auto_view text/html
 alternative_order text/plain text/html
